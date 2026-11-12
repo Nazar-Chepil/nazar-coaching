@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="uk" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Онлайн фітнес-коучинг та програми тренувань | Nazar Chepil Coaching
+    </title>
+    <meta
+      name="description"
+      content="Доказовий натуральний фітнес-коучинг в Україні. Індивідуальні програми, розрахунок харчування та онлайн-супровід."
+    />
+
+    <!-- Підключення шрифту Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Підключення Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS (CDN з конфігурацією бренд-кольорів) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                main: "#121212",
+                surface: "#1e1e1e",
+                elevated: "#2a2a2a",
+                terracotta: "#e2725b",
+                copper: "#b87333",
+                muted: "#a0a0a0",
+              },
+            },
+            fontFamily: {
+              sans: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Твій залишковий кастомний CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body
+    class="bg-brand-main text-white font-sans antialiased selection:bg-brand-terracotta selection:text-white"
+  >
+    <!-- Шапка сайту з адаптивним меню -->
+
+    <!-- Шапка сайту з адаптивним меню -->
+    <header
+      class="sticky top-0 z-50 bg-brand-main/95 backdrop-blur-md border-b border-brand-elevated relative"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
+      >
+        <!-- Логотип -->
+        <a
+          href="#"
+          class="block hover:opacity-80 transition-opacity shrink-0"
+          aria-label="Головна"
+        >
+          <img
+            src="assets/icons/logo.svg.svg"
+            alt="Nazar Chepil Logo"
+            class="h-16 sm:h-20 md:h-24 w-auto scale-110 origin-left"
+          />
+        </a>
+
+        <!-- Десктопна навігація (Ховається на мобільному) -->
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+          <a
+            href="#methodology"
+            class="text-sm font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Методологія</a
+          >
+          <a
+            href="#about"
+            class="text-sm font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Про тренера</a
+          >
+          <a
+            href="#calculator"
+            class="text-sm font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Калькулятор БЖУ</a
+          >
+          <a
+            href="#services"
+            class="text-sm font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Формати співпраці</a
+          >
+        </nav>
+
+        <!-- CTA та Кнопка-гамбургер -->
+        <div class="flex items-center gap-3">
+          <!-- CTA Кнопка (Видима скрізь) -->
+          <a
+            href="#contact"
+            class="bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-2 px-4 md:py-2.5 md:px-6 rounded-lg transition-all active:scale-95 text-xs sm:text-sm whitespace-nowrap"
+          >
+            <span class="hidden sm:inline">Почати трансформацію</span>
+            <span class="sm:hidden">Почати</span>
+          </a>
+
+          <!-- Кнопка-гамбургер для мобільних (Відкриває попап) -->
+          <button
+            type="button"
+            onclick="
+              document.getElementById('mobile-menu').classList.toggle('hidden')
+            "
+            class="md:hidden text-brand-muted hover:text-white focus:outline-none p-2 ml-1"
+            aria-label="Відкрити меню"
+          >
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Мобільне меню (Попап) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-brand-surface border-b border-brand-elevated shadow-2xl"
+      >
+        <div class="flex flex-col px-6 py-6 space-y-5">
+          <a
+            href="#methodology"
+            onclick="
+              document.getElementById('mobile-menu').classList.add('hidden')
+            "
+            class="text-base font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Методологія</a
+          >
+          <a
+            href="#about"
+            onclick="
+              document.getElementById('mobile-menu').classList.add('hidden')
+            "
+            class="text-base font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Про тренера</a
+          >
+          <a
+            href="#calculator"
+            onclick="
+              document.getElementById('mobile-menu').classList.add('hidden')
+            "
+            class="text-base font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Калькулятор БЖУ</a
+          >
+          <a
+            href="#services"
+            onclick="
+              document.getElementById('mobile-menu').classList.add('hidden')
+            "
+            class="text-base font-medium text-white hover:text-brand-terracotta transition-colors"
+            >Формати співпраці</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-bg min-h-[90vh] flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+          <div class="max-w-2xl">
+            <span
+              class="inline-block bg-brand-terracotta/15 text-brand-terracotta border border-brand-terracotta/30 px-4 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wide mb-6"
+            >
+              Natural Bodybuilding & Evidence-Based
+            </span>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase leading-tight mb-6"
+            >
+              Натуральний фітнес-коучинг. Тільки наука, дисципліна та ваш
+              результат.
+            </h1>
+            <p class="text-lg text-brand-muted mb-8 max-w-xl">
+              Отримай деталізований план: розрахунок макронутрієнтів, наукова
+              періодизація, контроль RPE та щотижневий трекінг прогресу для
+              максимальної ефективності.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#services"
+                class="w-full sm:w-auto bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-3.5 px-8 rounded-lg transition-all active:scale-95 text-center"
+              >
+                Обрати тариф
+              </a>
+              <a
+                href="#calculator"
+                class="w-full sm:w-auto border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3.5 px-8 rounded-lg transition-all active:scale-95 text-center"
+              >
+                Розрахувати БЖУ
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок "Методологія" -->
+      <section id="methodology" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Чому доказовий підхід?
+            </h2>
+            <p class="text-brand-muted text-lg">
+              Тренування без інтуїції, лише науково обґрунтовані методи
+              гіпертрофії.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"
+          >
+            <article
+              class="bg-brand-surface p-6 md:p-8 rounded-2xl border border-brand-elevated hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
+            >
+              <div
+                class="w-16 h-16 bg-brand-terracotta/10 rounded-xl flex items-center justify-center mb-6"
+              >
+                <i
+                  class="fa-solid fa-microscope text-brand-terracotta text-3xl"
+                ></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Наукова періодизація</h3>
+              <p class="text-brand-muted">
+                Оптимальний вибір вправ, контроль RPE та об'єму для подолання
+                плато без фарм-підтримки.
+              </p>
+            </article>
+
+            <article
+              class="bg-brand-surface p-6 md:p-8 rounded-2xl border border-brand-elevated hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
+            >
+              <div
+                class="w-16 h-16 bg-brand-terracotta/10 rounded-xl flex items-center justify-center mb-6"
+              >
+                <i
+                  class="fa-solid fa-chart-pie text-brand-terracotta text-3xl"
+                ></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Точна нутриціологія</h3>
+              <p class="text-brand-muted">
+                Гнучка дієта та точний розрахунок макронутрієнтів. Схуднути чи
+                набрати масу без зривів.
+              </p>
+            </article>
+
+            <article
+              class="bg-brand-surface p-6 md:p-8 rounded-2xl border border-brand-elevated hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300 sm:col-span-2 md:col-span-1"
+            >
+              <div
+                class="w-16 h-16 bg-brand-terracotta/10 rounded-xl flex items-center justify-center mb-6"
+              >
+                <i
+                  class="fa-solid fa-chart-line text-brand-terracotta text-3xl"
+                ></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Контроль результату</h3>
+              <p class="text-brand-muted">
+                Щотижневий аналіз відео вашої техніки, коригування плану та
+                постійний зворотний зв'язок.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок "Калькулятор БЖУ" -->
+      <section id="calculator" class="bg-brand-surface py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          >
+            <div class="space-y-6">
+              <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+                Розрахуйте свою норму БЖУ за 60 секунд
+              </h2>
+              <p class="text-brand-muted text-lg">
+                Дізнайтеся орієнтовну кількість калорій та макронутрієнтів для
+                підтримики вашого організму
+              </p>
+              <ul class="space-y-4 text-lg">
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta"></i>
+                  Враховує ваш вік, зріст та вагу
+                </li>
+
+                <li class="flex items-center gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta"></i>
+                  Базується на сучасних формулах
+                </li>
+              </ul>
+            </div>
+
+            <form
+              class="bg-brand-main p-6 md:p-10 rounded-2xl shadow-2xl border border-brand-elevated"
+            >
+              <div class="space-y-5">
+                <div>
+                  <label
+                    for="age"
+                    class="block text-sm font-medium text-brand-muted mb-2"
+                    >Вік (років)</label
+                  >
+                  <input
+                    type="number"
+                    id="age"
+                    placeholder="Наприклад: 25"
+                    class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      for="weight"
+                      class="block text-sm font-medium text-brand-muted mb-2"
+                      >Вага (кг)</label
+                    >
+                    <input
+                      type="number"
+                      id="weight"
+                      placeholder="Наприклад: 80"
+                      class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="height"
+                      class="block text-sm font-medium text-brand-muted mb-2"
+                      >Зріст (см)</label
+                    >
+                    <input
+                      type="number"
+                      id="height"
+                      placeholder="Наприклад: 180"
+                      class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="goal"
+                    class="block text-sm font-medium text-brand-muted mb-2"
+                    >Основна ціль</label
+                  >
+                  <select
+                    id="goal"
+                    class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white focus:outline-none focus:border-brand-terracotta transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="maintain">Підтримка ваги</option>
+                  </select>
+                </div>
+
+                <button
+                  type="button"
+                  class="w-full bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-4 rounded-lg transition-all active:scale-95 mt-4"
+                >
+                  Розрахувати норму
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок "Про тренера" -->
+      <section id="about" class="py-20 md:py-28">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">Про мене</h2>
+          <div class="space-y-6 text-brand-muted text-lg leading-relaxed">
+            <p>
+              Мене звати Назар з 16 років бодіблдинг став моїм стилем життя. Я
+              створив цей проєкт, бо знаю ціну помилок і сам пройшов шлях від
+              розгубленого новачка до досвідченого атлета, і допоможу тобі
+              пройти цей шлях.
+            </p>
+            <p>
+              Моя мета — дати систему. Свідомим новачкам я допомагаю подолати
+              страх травм: без складного сленгу, з покроковим планом і детальним
+              розбором техніки.
+            </p>
+            <p>
+              Досвідченим атлетам, які застрягли на плато, я даю наукову
+              періодизацію, точний трекінг об'єму та об'єктивний аналіз. За цим
+              стоїть багаторічний практичний досвід у натуральному тренінгу.
+            </p>
+          </div>
+          <a
+            href="#services"
+            class="inline-block w-full sm:w-auto mt-10 border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3.5 px-8 rounded-lg transition-all active:scale-95"
+          >
+            Переглянути формати роботи
+          </a>
+        </div>
+      </section>
+
+      <!-- Блок "Формати співпраці" -->
+      <section id="services" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Формати співпраці
+            </h2>
+            <p class="text-brand-muted text-lg">
+              Оберіть разову розробку програми або повноцінний супровід для
+              гарантованого досягнення цілі.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
+          >
+            <article
+              class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
+            >
+              <div class="text-center border-b border-brand-elevated pb-6 mb-6">
+                <h3
+                  class="text-xl font-bold mb-2 min-h-[56px] flex items-center justify-center"
+                >
+                  Разова консультація
+                </h3>
+                <div
+                  class="text-brand-terracotta font-bold uppercase text-sm tracking-wide"
+                >
+                  Аудит & Консультація
+                </div>
+              </div>
+              <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  60 хвилин онлайн-сесії
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Аналіз раціону та тренувань
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Розбір відео-техніки 3-х вправ
+                </li>
+                <li class="flex items-start gap-3 text-gray-500">
+                  <i class="fa-solid fa-xmark mt-1"></i> Без подальшого
+                  супроводу
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              >
+                Записатися
+              </a>
+            </article>
+
+            <article
+              class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
+            >
+              <div class="text-center border-b border-brand-elevated pb-6 mb-6">
+                <h3
+                  class="text-xl font-bold mb-2 min-h-[56px] flex items-center justify-center"
+                >
+                  План тренувань
+                </h3>
+                <div
+                  class="text-brand-terracotta font-bold uppercase text-sm tracking-wide"
+                >
+                  Індивідуальна програма
+                </div>
+              </div>
+              <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Схема на 8-12 тижнів
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Періодизація навантаження (RPE)
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Врахування травм та інвентарю
+                </li>
+                <li class="flex items-start gap-3 text-gray-500">
+                  <i class="fa-solid fa-xmark mt-1"></i> Без контролю харчування
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              >
+                Отримати план
+              </a>
+            </article>
+
+            <article
+              class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
+            >
+              <div class="text-center border-b border-brand-elevated pb-6 mb-6">
+                <h3
+                  class="text-xl font-bold mb-2 min-h-[56px] flex items-center justify-center"
+                >
+                  План тренувань + Харчування
+                </h3>
+                <div
+                  class="text-brand-terracotta font-bold uppercase text-sm tracking-wide"
+                >
+                  Комплексний старт
+                </div>
+              </div>
+              <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Програма тренувань
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Розрахунок калорій та БЖУ
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Конструктор раціону
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Гайд по добавкам
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              >
+                Замовити комплект
+              </a>
+            </article>
+
+            <article
+              class="bg-brand-elevated rounded-2xl p-6 border-2 border-brand-terracotta flex flex-col relative lg:scale-105 shadow-2xl"
+            >
+              <div
+                class="absolute -top-3.5 right-0 left-0 mx-auto w-max bg-brand-terracotta text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+              >
+                Максимальний результат
+              </div>
+              <div class="text-center border-b border-brand-surface pb-6 mb-6">
+                <h3
+                  class="text-xl font-bold mb-2 min-h-[56px] flex items-center justify-center"
+                >
+                  Персональний Pro-супровід
+                </h3>
+                <div
+                  class="text-brand-terracotta font-bold uppercase text-sm tracking-wide"
+                >
+                  Повний коучинг (1 міс.)
+                </div>
+              </div>
+              <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
+                <li class="flex items-start gap-3 text-white">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Тренування + Харчування
+                </li>
+                <li class="flex items-start gap-3 text-white">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Щотижневий аналіз техніки
+                </li>
+                <li class="flex items-start gap-3 text-white">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Коригування Check-ins
+                </li>
+                <li class="flex items-start gap-3 text-white">
+                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  Щоденний зв'язок у Telegram
+                </li>
+              </ul>
+              <a
+                href="#contact"
+                class="block w-full text-center bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-3 rounded-lg transition-colors shadow-lg shadow-brand-terracotta/20"
+              >
+                Почати коучинг
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Підвал сайту -->
+    <footer class="bg-brand-surface border-t border-brand-elevated pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <!-- Бренд -->
+          <div>
+            <a href="#" class="block mb-6" aria-label="Головна">
+              <!-- Збільшений логотип у підвалі -->
+              <img
+                src="assets/icons/logo.svg.svg"
+                alt="Nazar Chepil Logo"
+                class="h-24 md:h-28 w-auto object-contain origin-left"
+              />
+            </a>
+            <p class="text-brand-muted text-sm leading-relaxed mb-6 max-w-xs">
+              Доказовий натуральний фітнес-коучинг. Тільки наука, дисципліна та
+              результат.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://www.instagram.com/nazar_chepil_/"
+                class="text-xl text-brand-muted hover:text-brand-terracotta transition-colors"
+                aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="text-xl text-brand-muted hover:text-brand-terracotta transition-colors"
+                aria-label="Telegram"
+                ><i class="fa-brands fa-telegram"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Навігація -->
+          <div>
+            <h4 class="text-lg font-bold mb-6">Навігація</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#methodology"
+                  class="text-brand-muted hover:text-brand-terracotta transition-colors"
+                  >Методологія</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-brand-muted hover:text-brand-terracotta transition-colors"
+                  >Про тренера</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#calculator"
+                  class="text-brand-muted hover:text-brand-terracotta transition-colors"
+                  >Калькулятор БЖУ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-brand-muted hover:text-brand-terracotta transition-colors"
+                  >Тарифи</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Контакти -->
+          <div>
+            <h4 class="text-lg font-bold mb-6">Контакти</h4>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3 text-brand-muted">
+                <i class="fa-solid fa-envelope text-brand-terracotta"></i>
+                info.nazarchepil@gmail.com
+              </li>
+              <li class="flex items-center gap-3 text-brand-muted">
+                <i class="fa-solid fa-location-dot text-brand-terracotta"></i>
+                Україна, Львів / Онлайн
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-brand-elevated pt-8 text-center text-sm text-brand-muted/60"
+        >
+          <p>
+            &copy; 2026 Nazar Chepil Coaching. Всі права захищені. |
+            <a href="#" class="hover:text-brand-terracotta transition-colors"
+              >Договір публічної оферти</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
