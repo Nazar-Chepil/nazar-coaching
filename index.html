@@ -11,7 +11,7 @@
       content="Доказовий натуральний фітнес-коучинг в Україні. Індивідуальні програми, розрахунок харчування та онлайн-супровід."
     />
 
-    <!-- Оптимізація завантаження шрифтів (усуває проблеми блокування рендерингу) -->
+    <!-- Оптимізація завантаження шрифтів -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,7 +49,7 @@
       };
     </script>
 
-    <!-- Твій залишковий кастомний CSS -->
+    <!-- Кастомний CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body
@@ -57,7 +57,7 @@
   >
     <!-- Шапка сайту з адаптивним меню -->
     <header
-      class="sticky top-0 z-50 bg-brand-main/95 backdrop-blur-md border-b border-brand-elevated relative"
+      class="sticky top-0 z-40 bg-brand-main/95 backdrop-blur-md border-b border-brand-elevated"
     >
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
@@ -75,7 +75,7 @@
           />
         </a>
 
-        <!-- Десктопна навігація (Ховається на мобільному) -->
+        <!-- Десктопна навігація -->
         <nav class="hidden md:flex items-center gap-6 lg:gap-8">
           <a
             href="#methodology"
@@ -101,7 +101,6 @@
 
         <!-- CTA та Кнопка-гамбургер -->
         <div class="flex items-center gap-3">
-          <!-- CTA Кнопка (Веде на тарифи #services) -->
           <a
             href="#services"
             class="bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-2 px-4 md:py-2.5 md:px-6 rounded-lg transition-all active:scale-95 text-xs sm:text-sm whitespace-nowrap"
@@ -110,7 +109,6 @@
             <span class="sm:hidden">Почати</span>
           </a>
 
-          <!-- Кнопка-гамбургер для мобільних (Відкриває попап) -->
           <button
             type="button"
             onclick="
@@ -124,7 +122,7 @@
         </div>
       </div>
 
-      <!-- Мобільне меню (Попап) -->
+      <!-- Мобільне меню -->
       <div
         id="mobile-menu"
         class="hidden md:hidden absolute top-full left-0 w-full bg-brand-surface border-b border-brand-elevated shadow-2xl"
@@ -275,7 +273,7 @@
         </div>
       </section>
 
-      <!-- Блок "Калькулятор БЖУ" -->
+      <!-- Відновлений Блок "Калькулятор БЖУ" -->
       <section id="calculator" class="bg-brand-surface py-20 md:py-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -287,90 +285,214 @@
               </h2>
               <p class="text-brand-muted text-lg">
                 Дізнайтеся орієнтовну кількість калорій та макронутрієнтів для
-                підтримики вашого організму
+                підтримки вашого організму
               </p>
               <ul class="space-y-4 text-lg">
                 <li class="flex items-center gap-3">
                   <i class="fa-solid fa-check text-brand-terracotta"></i>
                   Враховує ваш вік, зріст та вагу
                 </li>
-
                 <li class="flex items-center gap-3">
                   <i class="fa-solid fa-check text-brand-terracotta"></i>
-                  Базується на сучасних формулах
+                  Базується на сучасних формулах (Mifflin-St Jeor)
                 </li>
               </ul>
             </div>
 
-            <form
-              class="bg-brand-main p-6 md:p-10 rounded-2xl shadow-2xl border border-brand-elevated"
+            <!-- Віджет калькулятора БЖУ -->
+            <div
+              class="w-full p-6 sm:p-8 bg-brand-main border border-brand-elevated rounded-2xl shadow-2xl"
             >
-              <div class="space-y-5">
+              <form id="bjuForm" class="space-y-5">
+                <!-- Стать -->
                 <div>
-                  <label
-                    for="age"
-                    class="block text-sm font-medium text-brand-muted mb-2"
-                    >Вік (років)</label
+                  <span class="block text-sm font-semibold text-slate-200 mb-2"
+                    >Стать</span
                   >
-                  <input
-                    type="number"
-                    id="age"
-                    placeholder="Наприклад: 25"
-                    class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
-                  />
+                  <div class="grid grid-cols-2 gap-3">
+                    <label class="cursor-pointer">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked
+                        class="peer sr-only"
+                      />
+                      <div
+                        class="h-11 rounded-xl border border-brand-elevated bg-brand-surface flex items-center justify-center text-sm font-semibold text-brand-muted peer-checked:border-brand-terracotta peer-checked:bg-brand-terracotta/15 peer-checked:text-white transition-all"
+                      >
+                        Чоловіча
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        class="peer sr-only"
+                      />
+                      <div
+                        class="h-11 rounded-xl border border-brand-elevated bg-brand-surface flex items-center justify-center text-sm font-semibold text-brand-muted peer-checked:border-brand-terracotta peer-checked:bg-brand-terracotta/15 peer-checked:text-white transition-all"
+                      >
+                        Жіноча
+                      </div>
+                    </label>
+                  </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Вік, Вага, Зріст -->
+                <div class="grid grid-cols-3 gap-3">
                   <div>
                     <label
-                      for="weight"
-                      class="block text-sm font-medium text-brand-muted mb-2"
+                      for="bjuAge"
+                      class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5"
+                      >Вік (років)</label
+                    >
+                    <input
+                      type="number"
+                      id="bjuAge"
+                      min="14"
+                      max="90"
+                      value="22"
+                      required
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="bjuWeight"
+                      class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5"
                       >Вага (кг)</label
                     >
                     <input
                       type="number"
-                      id="weight"
-                      placeholder="Наприклад: 80"
-                      class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
+                      id="bjuWeight"
+                      min="35"
+                      max="220"
+                      value="75"
+                      required
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
                     />
                   </div>
                   <div>
                     <label
-                      for="height"
-                      class="block text-sm font-medium text-brand-muted mb-2"
+                      for="bjuHeight"
+                      class="block text-xs sm:text-sm font-semibold text-slate-200 mb-1.5"
                       >Зріст (см)</label
                     >
                     <input
                       type="number"
-                      id="height"
-                      placeholder="Наприклад: 180"
-                      class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-brand-terracotta transition-colors"
+                      id="bjuHeight"
+                      min="130"
+                      max="230"
+                      value="180"
+                      required
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
                     />
                   </div>
                 </div>
 
+                <!-- Рівень активності -->
                 <div>
                   <label
-                    for="goal"
-                    class="block text-sm font-medium text-brand-muted mb-2"
-                    >Основна ціль</label
+                    for="bjuActivity"
+                    class="block text-sm font-semibold text-slate-200 mb-1.5"
+                    >Рівень фізичної активності</label
                   >
                   <select
-                    id="goal"
-                    class="w-full p-3.5 bg-brand-elevated border border-brand-surface rounded-lg text-white focus:outline-none focus:border-brand-terracotta transition-colors appearance-none cursor-pointer"
+                    id="bjuActivity"
+                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
                   >
-                    <option value="maintain">Підтримка ваги</option>
+                    <option value="1.2">
+                      Мінімальна (сидячий спосіб життя)
+                    </option>
+                    <option value="1.375">
+                      Легка (1–3 тренування на тиждень)
+                    </option>
+                    <option value="1.55" selected>
+                      Середня (3–5 тренувань на тиждень)
+                    </option>
+                    <option value="1.725">
+                      Висока (6–7 інтенсивних тренувань)
+                    </option>
+                  </select>
+                </div>
+
+                <!-- Ціль -->
+                <div>
+                  <label
+                    for="bjuGoal"
+                    class="block text-sm font-semibold text-slate-200 mb-1.5"
+                    >Ваша ціль</label
+                  >
+                  <select
+                    id="bjuGoal"
+                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                  >
+                    <option value="cut">Жироспалення (дефіцит -15%)</option>
+                    <option value="maintain" selected>Підтримка форми</option>
+                    <option value="bulk">Набір м'язової маси (+15%)</option>
                   </select>
                 </div>
 
                 <button
-                  type="button"
-                  class="w-full bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-4 rounded-lg transition-all active:scale-95 mt-4"
+                  type="submit"
+                  class="w-full h-12 bg-brand-terracotta hover:bg-brand-copper text-white font-bold rounded-xl transition-all active:scale-[0.99] shadow-lg shadow-brand-terracotta/20"
                 >
                   Розрахувати норму
                 </button>
+              </form>
+
+              <!-- Результат розрахунку -->
+              <div
+                id="bjuResult"
+                class="hidden mt-6 pt-6 border-t border-brand-elevated space-y-4"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-brand-muted"
+                    >Денна норма калорій:</span
+                  >
+                  <span
+                    id="resCalories"
+                    class="text-2xl font-extrabold text-brand-terracotta"
+                    >2650 ккал</span
+                  >
+                </div>
+                <div class="grid grid-cols-3 gap-3 text-center">
+                  <div
+                    class="p-3 rounded-xl bg-brand-surface border border-brand-elevated"
+                  >
+                    <div class="text-xs text-brand-muted mb-1">Білки</div>
+                    <div id="resProtein" class="text-base font-bold text-white">
+                      150 г
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 rounded-xl bg-brand-surface border border-brand-elevated"
+                  >
+                    <div class="text-xs text-brand-muted mb-1">Жири</div>
+                    <div id="resFats" class="text-base font-bold text-white">
+                      74 г
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 rounded-xl bg-brand-surface border border-brand-elevated"
+                  >
+                    <div class="text-xs text-brand-muted mb-1">Вуглеводи</div>
+                    <div id="resCarbs" class="text-base font-bold text-white">
+                      346 г
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  data-open-booking="Персональний розбір раціону за БЖУ"
+                  class="w-full py-2.5 px-4 rounded-xl border border-brand-terracotta text-xs sm:text-sm font-semibold text-white hover:bg-brand-terracotta transition-colors"
+                >
+                  Отримати персональний план під ці цифри →
+                </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>
@@ -381,7 +503,7 @@
           <h2 class="text-3xl md:text-4xl font-bold mb-8">Про мене</h2>
           <div class="space-y-6 text-brand-muted text-lg leading-relaxed">
             <p>
-              Мене звати Назар з 16 років бодіблдинг став моїм стилем життя. Я
+              Мене звати Назар, з 16 років бодібілдинг став моїм стилем життя. Я
               створив цей проєкт, бо знаю ціну помилок і сам пройшов шлях від
               розгубленого новачка до досвідченого атлета, і допоможу тобі
               пройти цей шлях.
@@ -422,6 +544,7 @@
           <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
           >
+            <!-- Картка 1: Разова консультація -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -455,14 +578,16 @@
                   супроводу
                 </li>
               </ul>
-              <a
-                href="#services"
-                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              <button
+                type="button"
+                data-open-booking="Разова консультація"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors cursor-pointer"
               >
                 Записатися
-              </a>
+              </button>
             </article>
 
+            <!-- Картка 2: План тренувань -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -495,14 +620,16 @@
                   <i class="fa-solid fa-xmark mt-1"></i> Без контролю харчування
                 </li>
               </ul>
-              <a
-                href="#services"
-                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              <button
+                type="button"
+                data-open-booking="План тренувань"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors cursor-pointer"
               >
                 Отримати план
-              </a>
+              </button>
             </article>
 
+            <!-- Картка 3: План тренувань + Харчування -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -536,14 +663,16 @@
                   Гайд по добавкам
                 </li>
               </ul>
-              <a
-                href="#services"
-                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors"
+              <button
+                type="button"
+                data-open-booking="План тренувань + Харчування"
+                class="block w-full text-center border-2 border-brand-terracotta text-white hover:bg-brand-terracotta font-semibold py-3 rounded-lg transition-colors cursor-pointer"
               >
                 Замовити комплект
-              </a>
+              </button>
             </article>
 
+            <!-- Картка 4: Персональний Pro-супровід -->
             <article
               class="bg-brand-elevated rounded-2xl p-6 border-2 border-brand-terracotta flex flex-col relative lg:scale-105 shadow-2xl"
             >
@@ -582,12 +711,13 @@
                   Щоденний зв'язок у Telegram
                 </li>
               </ul>
-              <a
-                href="#services"
-                class="block w-full text-center bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-3 rounded-lg transition-colors shadow-lg shadow-brand-terracotta/20"
+              <button
+                type="button"
+                data-open-booking="Персональний Pro-супровід"
+                class="block w-full text-center bg-brand-terracotta hover:bg-brand-copper text-white font-semibold py-3 rounded-lg transition-colors shadow-lg shadow-brand-terracotta/20 cursor-pointer"
               >
                 Почати коучинг
-              </a>
+              </button>
             </article>
           </div>
         </div>
@@ -595,66 +725,122 @@
     </main>
 
     <!-- Підвал сайту -->
-    <footer id="contact" class="bg-brand-surface border-t border-brand-elevated pt-16 pb-8">
+    <footer
+      id="contact"
+      class="bg-brand-surface border-t border-brand-elevated pt-16 pb-8"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <!-- Блок з акордеонами (Карта та Календар) -->
         <div class="max-w-4xl mx-auto mb-16 space-y-6">
-          <h4 class="text-xl md:text-2xl font-bold mb-6 text-center text-white">Локація та Календар</h4>
-          
+          <h4 class="text-xl md:text-2xl font-bold mb-6 text-center text-white">
+            Локація та Календар
+          </h4>
+
           <!-- Акордеон: Карта -->
-          <div class="bg-brand-main border border-brand-elevated rounded-2xl overflow-hidden hover:border-brand-terracotta transition-colors duration-300">
+          <div
+            class="bg-brand-main border border-brand-elevated rounded-2xl overflow-hidden hover:border-brand-terracotta transition-colors duration-300"
+          >
             <button
-              onclick="document.getElementById('map-content').classList.toggle('hidden'); document.getElementById('map-icon').classList.toggle('rotate-180');"
+              type="button"
+              onclick="
+                document
+                  .getElementById('map-content')
+                  .classList.toggle('hidden');
+                document
+                  .getElementById('map-icon')
+                  .classList.toggle('rotate-180');
+              "
               class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none"
             >
               <div class="flex items-center gap-3 sm:gap-4">
-                <div class="w-10 h-10 bg-brand-terracotta/10 rounded-xl flex items-center justify-center shrink-0">
-                  <i class="fa-solid fa-map-location-dot text-brand-terracotta text-lg sm:text-xl"></i>
+                <div
+                  class="w-10 h-10 bg-brand-terracotta/10 rounded-xl flex items-center justify-center shrink-0"
+                >
+                  <i
+                    class="fa-solid fa-map-location-dot text-brand-terracotta text-lg sm:text-xl"
+                  ></i>
                 </div>
-                <span class="text-base sm:text-lg md:text-xl font-bold text-left">Карта</span>
+                <span
+                  class="text-base sm:text-lg md:text-xl font-bold text-left"
+                  >Карта</span
+                >
               </div>
-              <i id="map-icon" class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"></i>
+              <i
+                id="map-icon"
+                class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"
+              ></i>
             </button>
-            
-            <div id="map-content" class="hidden p-3 sm:p-6 border-t border-brand-elevated">
-              <div class="w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden bg-brand-elevated">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164687.05063085732!2d23.872146914562573!3d49.83277873523458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add7c09109a57%3A0x4223c517012378e2!2sLviv%2C%20Lviv%20Oblast%2C%20Ukraine%2C%2079000!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-                  class="w-full h-full border-0" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  title="Локація залу" 
-                  referrerpolicy="no-referrer-when-downgrade">
+
+            <div
+              id="map-content"
+              class="hidden p-3 sm:p-6 border-t border-brand-elevated"
+            >
+              <div
+                class="w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden bg-brand-elevated"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164687.05063085732!2d23.872146914562573!3d49.83277873523458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add7c09109a57%3A0x4223c517012378e2!2sLviv%2C%20Lviv%20Oblast%2C%20Ukraine%2C%2079000!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  class="w-full h-full border-0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  title="Локація залу"
+                  referrerpolicy="no-referrer-when-downgrade"
+                >
                 </iframe>
               </div>
             </div>
           </div>
 
           <!-- Акордеон: Календар -->
-          <div class="bg-brand-main border border-brand-elevated rounded-2xl overflow-hidden hover:border-brand-terracotta transition-colors duration-300">
+          <div
+            class="bg-brand-main border border-brand-elevated rounded-2xl overflow-hidden hover:border-brand-terracotta transition-colors duration-300"
+          >
             <button
-              onclick="document.getElementById('calendar-content').classList.toggle('hidden'); document.getElementById('calendar-icon').classList.toggle('rotate-180');"
+              type="button"
+              onclick="
+                document
+                  .getElementById('calendar-content')
+                  .classList.toggle('hidden');
+                document
+                  .getElementById('calendar-icon')
+                  .classList.toggle('rotate-180');
+              "
               class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none"
             >
               <div class="flex items-center gap-3 sm:gap-4">
-                <div class="w-10 h-10 bg-brand-terracotta/10 rounded-xl flex items-center justify-center shrink-0">
-                  <i class="fa-solid fa-calendar-days text-brand-terracotta text-lg sm:text-xl"></i>
+                <div
+                  class="w-10 h-10 bg-brand-terracotta/10 rounded-xl flex items-center justify-center shrink-0"
+                >
+                  <i
+                    class="fa-solid fa-calendar-days text-brand-terracotta text-lg sm:text-xl"
+                  ></i>
                 </div>
-                <span class="text-base sm:text-lg md:text-xl font-bold text-left">Календар</span>
+                <span
+                  class="text-base sm:text-lg md:text-xl font-bold text-left"
+                  >Календар</span
+                >
               </div>
-              <i id="calendar-icon" class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"></i>
+              <i
+                id="calendar-icon"
+                class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"
+              ></i>
             </button>
-            
-            <div id="calendar-content" class="hidden p-3 sm:p-6 border-t border-brand-elevated">
-              <div class="w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden bg-white">
-                <iframe 
-                  src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FKyiv&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" 
-                  class="w-full h-full border-0" 
-                  frameborder="0" 
-                  scrolling="no" 
-                  loading="lazy" 
-                  title="Календар">
+
+            <div
+              id="calendar-content"
+              class="hidden p-3 sm:p-6 border-t border-brand-elevated"
+            >
+              <div
+                class="w-full h-[400px] md:h-[600px] rounded-xl overflow-hidden bg-white"
+              >
+                <iframe
+                  src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FKyiv&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH"
+                  class="w-full h-full border-0"
+                  frameborder="0"
+                  scrolling="no"
+                  loading="lazy"
+                  title="Календар"
+                >
                 </iframe>
               </div>
             </div>
@@ -754,5 +940,295 @@
         </div>
       </div>
     </footer>
+
+    <!-- =================================================================== -->
+    <!-- ПОПАП З ФОРМОЮ ЗАПИСУ НА КОНСУЛЬТАЦІЮ ТА КЛІЄНТСЬКОЮ ВАЛІДАЦІЄЮ     -->
+    <!-- =================================================================== -->
+    <div
+      id="bookingModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bookingModalTitle"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto"
+    >
+      <div
+        class="relative w-full max-w-2xl my-auto p-6 sm:p-8 bg-[#1E1E1E] border border-[#2A2A2A] rounded-2xl shadow-2xl max-h-[92vh] overflow-y-auto"
+      >
+        <!-- Кнопка закриття попапу -->
+        <button
+          type="button"
+          id="closeBookingModalBtn"
+          aria-label="Закрити вікно запису"
+          class="absolute top-4 right-4 w-9 h-9 rounded-lg bg-[#121212] border border-[#2A2A2A] text-slate-400 hover:text-white hover:border-[#E2725B] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
+        >
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <!-- Заголовок попапу -->
+        <div class="mb-6 pr-8">
+          <span
+            id="bookingServiceBadge"
+            class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#E2725B]/15 text-[#E2725B] border border-[#E2725B]/30 mb-2"
+          >
+            Разова консультація
+          </span>
+          <h2
+            id="bookingModalTitle"
+            class="text-2xl sm:text-3xl font-bold text-white"
+          >
+            Запис на консультацію
+          </h2>
+          <p class="mt-1 text-xs sm:text-sm text-slate-400">
+            Заповніть форму нижче — я зв'яжуся з вами для узгодження зручного
+            часу.
+          </p>
+        </div>
+
+        <!-- Семантична форма з валідацією -->
+        <form id="feedbackForm" novalidate class="space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Ім'я -->
+            <div>
+              <label
+                for="username"
+                class="block text-sm font-semibold text-slate-100 mb-2"
+              >
+                Ваше ім'я <span class="text-[#E2725B]">*</span>
+              </label>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  autocomplete="name"
+                  required
+                  aria-describedby="usernameError"
+                  aria-invalid="false"
+                  class="w-full h-12 px-4 pr-10 rounded-xl bg-[#121212] border border-[#2A2A2A] text-slate-100 text-sm transition-colors duration-200 hover:border-[#B87333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
+                />
+                <svg
+                  id="usernameSuccessIcon"
+                  class="hidden w-5 h-5 text-green-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <p
+                id="usernameError"
+                class="hidden mt-1.5 text-xs text-red-400"
+                role="alert"
+              ></p>
+            </div>
+
+            <!-- Емейл -->
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-semibold text-slate-100 mb-2"
+              >
+                Електронна пошта <span class="text-[#E2725B]">*</span>
+              </label>
+              <div class="relative">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-describedby="emailError"
+                  aria-invalid="false"
+                  class="w-full h-12 px-4 pr-10 rounded-xl bg-[#121212] border border-[#2A2A2A] text-slate-100 text-sm transition-colors duration-200 hover:border-[#B87333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
+                />
+                <svg
+                  id="emailSuccessIcon"
+                  class="hidden w-5 h-5 text-green-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <p
+                id="emailError"
+                class="hidden mt-1.5 text-xs text-red-400"
+                role="alert"
+              ></p>
+            </div>
+          </div>
+
+          <!-- Телефон -->
+          <div>
+            <label
+              for="phone"
+              class="block text-sm font-semibold text-slate-100 mb-2"
+            >
+              Номер телефону (у форматі +380XXXXXXXXX)
+              <span class="text-[#E2725B]">*</span>
+            </label>
+            <div class="relative">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+                aria-describedby="phoneError"
+                aria-invalid="false"
+                class="w-full h-12 px-4 pr-10 rounded-xl bg-[#121212] border border-[#2A2A2A] text-slate-100 text-sm transition-colors duration-200 hover:border-[#B87333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
+              />
+              <svg
+                id="phoneSuccessIcon"
+                class="hidden w-5 h-5 text-green-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <p
+              id="phoneError"
+              class="hidden mt-1.5 text-xs text-red-400"
+              role="alert"
+            ></p>
+          </div>
+
+          <!-- Повідомлення -->
+          <div>
+            <label
+              for="message"
+              class="block text-sm font-semibold text-slate-100 mb-2"
+            >
+              Ваша ціль або запитання <span class="text-[#E2725B]">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              required
+              aria-describedby="messageError"
+              aria-invalid="false"
+              class="w-full p-4 rounded-xl bg-[#121212] border border-[#2A2A2A] text-slate-100 text-sm transition-colors duration-200 hover:border-[#B87333] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B] resize-y"
+            ></textarea>
+            <p
+              id="messageError"
+              class="hidden mt-1.5 text-xs text-red-400"
+              role="alert"
+            ></p>
+          </div>
+
+          <!-- Чекбокс згоди -->
+          <div>
+            <div class="flex items-start gap-3">
+              <input
+                type="checkbox"
+                id="agreement"
+                name="agreement"
+                required
+                aria-describedby="agreementError"
+                aria-invalid="false"
+                class="mt-0.5 w-5 h-5 rounded border-[#2A2A2A] bg-[#121212] accent-[#E2725B] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
+              />
+              <label
+                for="agreement"
+                class="text-xs sm:text-sm text-slate-300 leading-relaxed cursor-pointer select-none"
+              >
+                Я погоджуюсь з політикою конфіденційності та даю згоду на
+                обробку персональних даних
+                <span class="text-[#E2725B]">*</span>
+              </label>
+            </div>
+            <p
+              id="agreementError"
+              class="hidden mt-1.5 text-xs text-red-400"
+              role="alert"
+            ></p>
+          </div>
+
+          <!-- Кнопка надсилання -->
+          <button
+            type="submit"
+            class="w-full h-12 px-6 rounded-xl bg-[#E2725B] hover:bg-[#d16049] active:scale-[0.99] text-white font-bold text-sm sm:text-base tracking-wide shadow-lg shadow-[#E2725B]/20 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E1E1E] focus-visible:ring-[#E2725B]"
+          >
+            Надіслати заявку
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- МОДАЛЬНЕ ВІКНО УСПІШНОЇ ВАЛІДАЦІЇ                                   -->
+    <!-- =================================================================== -->
+    <div
+      id="successModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+    >
+      <div
+        class="w-full max-w-md p-6 sm:p-8 bg-[#1E1E1E] border border-[#2A2A2A] rounded-2xl shadow-2xl text-center"
+      >
+        <div
+          class="w-14 h-14 mx-auto mb-4 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center"
+        >
+          <svg
+            class="w-7 h-7 text-green-500"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h2 id="modalTitle" class="text-xl font-bold text-white mb-2">
+          Заявку успішно перевірено!
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+          Форма успішно пройшла клієнтську валідацію. Демонстрація успішного
+          надсилання заявки для
+          <span class="font-semibold text-[#E2725B]">Nazar Chepil Coaching</span
+          >.
+        </p>
+        <button
+          type="button"
+          id="closeModalBtn"
+          class="w-full h-11 px-5 rounded-xl bg-[#E2725B] hover:bg-[#d16049] text-white font-semibold text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E1E1E] focus-visible:ring-[#E2725B]"
+        >
+          Закрити
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/js/validation.js"></script>
   </body>
 </html>
