@@ -49,6 +49,16 @@
       };
     </script>
 
+    <!-- CDN стилі для Swiper.js v11 та Fancybox v5 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+
     <!-- Кастомний CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -180,6 +190,12 @@
               Натуральний фітнес-коучинг. Тільки наука, дисципліна та ваш
               результат.
             </h1>
+            <!-- Ось цей блок просто додається між h1 та p -->
+            <div
+              class="text-xl md:text-2xl font-bold text-brand-terracotta mb-6 min-h-[32px]"
+            >
+              <span id="typed-slogan"></span>
+            </div>
             <p class="text-lg text-brand-muted mb-8 max-w-xl">
               Отримай деталізований план: розрахунок макронутрієнтів, наукова
               періодизація, контроль RPE та щотижневий трекінг прогресу для
@@ -525,6 +541,341 @@
           >
             Переглянути формати роботи
           </a>
+        </div>
+      </section>
+
+      <!-- Блок "Результати та відгуки" (Swiper.js + Fancybox v5) -->
+      <section
+        id="results"
+        class="bg-brand-surface py-20 md:py-28 border-y border-brand-elevated"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <span
+              class="inline-block bg-brand-terracotta/15 text-brand-terracotta border border-brand-terracotta/30 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4"
+            >
+              Social Proof & Case Studies
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Відгуки та результати атлетів
+            </h2>
+            <p class="text-brand-muted text-lg">
+              Реальні кейси трансформації без стероїдів завдяки науковій
+              періодизації та контролю КБЖВ.
+            </p>
+          </div>
+
+          <!-- Слайдер відгуків (Swiper.js v11 — 5 слайдів) -->
+          <div
+            class="swiper reviews-swiper pb-14 mb-20"
+            style="
+              --swiper-theme-color: #e2725b;
+              --swiper-navigation-size: 26px;
+            "
+          >
+            <div class="swiper-wrapper">
+              <!-- Слайд 1 -->
+              <div class="swiper-slide h-auto">
+                <article
+                  class="h-full bg-brand-main p-6 md:p-8 rounded-2xl border border-brand-elevated flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p
+                      class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
+                    >
+                      «За 16 тижнів супроводу скинув 7.5 кг жиру, зберігши
+                      робочі ваги у базових вправах. Жодних жорстких заборон у
+                      харчуванні, все чітко по цифрах.»
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-brand-elevated"
+                  >
+                    <div>
+                      <h3 class="font-bold text-white text-base">
+                        Олександр К.
+                      </h3>
+                      <p class="text-xs text-brand-muted">
+                        Програма: Pro-супровід
+                      </p>
+                    </div>
+                    <span
+                      class="text-xs font-bold px-3 py-1 rounded-full bg-brand-terracotta/15 text-brand-terracotta"
+                    >
+                      -7.5 кг за 4 міс.
+                    </span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Слайд 2 -->
+              <div class="swiper-slide h-auto">
+                <article
+                  class="h-full bg-brand-main p-6 md:p-8 rounded-2xl border border-brand-elevated flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p
+                      class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
+                    >
+                      «Рік стояв на плато в жимі лежачи та підтягуваннях. Після
+                      корекції тренувального об'єму та RPE зрушив ваги з мертвої
+                      точки вже на 5-му тижні.»
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-brand-elevated"
+                  >
+                    <div>
+                      <h3 class="font-bold text-white text-base">Максим Д.</h3>
+                      <p class="text-xs text-brand-muted">
+                        Досвід: 2 роки в залі
+                      </p>
+                    </div>
+                    <span
+                      class="text-xs font-bold px-3 py-1 rounded-full bg-brand-terracotta/15 text-brand-terracotta"
+                    >
+                      +15 кг у жимі
+                    </span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Слайд 3 -->
+              <div class="swiper-slide h-auto">
+                <article
+                  class="h-full bg-brand-main p-6 md:p-8 rounded-2xl border border-brand-elevated flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p
+                      class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
+                    >
+                      «Прийшла повним новачком зі страхом травмувати спину.
+                      Назар детально розібрав техніку на відео, тепер впевнено
+                      тренуюся без дискомфорту.»
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-brand-elevated"
+                  >
+                    <div>
+                      <h3 class="font-bold text-white text-base">Ірина М.</h3>
+                      <p class="text-xs text-brand-muted">Старт з нуля</p>
+                    </div>
+                    <span
+                      class="text-xs font-bold px-3 py-1 rounded-full bg-brand-terracotta/15 text-brand-terracotta"
+                    >
+                      -6 см у талії
+                    </span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Слайд 4 -->
+              <div class="swiper-slide h-auto">
+                <article
+                  class="h-full bg-brand-main p-6 md:p-8 rounded-2xl border border-brand-elevated flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p
+                      class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
+                    >
+                      «Дуже зручний формат щотижневих чек-інів: бачиш реальну
+                      динаміку на графіках, а не гадаєш, чи працює програма.
+                      Максимально науковий підхід.»
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-brand-elevated"
+                  >
+                    <div>
+                      <h3 class="font-bold text-white text-base">Тарас В.</h3>
+                      <p class="text-xs text-brand-muted">Набір сухої маси</p>
+                    </div>
+                    <span
+                      class="text-xs font-bold px-3 py-1 rounded-full bg-brand-terracotta/15 text-brand-terracotta"
+                    >
+                      +4.2 кг за 3 міс.
+                    </span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Слайд 5 -->
+              <div class="swiper-slide h-auto">
+                <article
+                  class="h-full bg-brand-main p-6 md:p-8 rounded-2xl border border-brand-elevated flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                    >
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p
+                      class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
+                    >
+                      «Брав пакет "План тренувань + Харчування". Конструктор
+                      раціону реально рятує при щільному робочому графіку в IT.»
+                    </p>
+                  </div>
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-brand-elevated"
+                  >
+                    <div>
+                      <h3 class="font-bold text-white text-base">Денис С.</h3>
+                      <p class="text-xs text-brand-muted">Комплексний старт</p>
+                    </div>
+                    <span
+                      class="text-xs font-bold px-3 py-1 rounded-full bg-brand-terracotta/15 text-brand-terracotta"
+                    >
+                      Рекомпозиція
+                    </span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+
+          <!-- Модальна галерея (Fancybox v5 — єдиний альбом coaching-gallery) -->
+          <div>
+            <h3 class="text-2xl md:text-3xl font-bold text-center mb-3">
+              Тренувальний процес та атмосфера
+            </h3>
+            <p class="text-brand-muted text-center text-sm md:text-base mb-10">
+              Натисніть на будь-яке фото, щоб відкрити повноекранний перегляд із
+              масштабуванням
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <a
+                href="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Силовий мезоцикл: контроль техніки та прогресія навантажень"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80"
+                  alt="Тренувальний зал та інвентар"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+
+              <a
+                href="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Робота з вільними вагами для максимальної гіпертрофії"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80"
+                  alt="Виконання силової вправи"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+
+              <a
+                href="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Підготовка до змагань з натурального бодібілдингу (WNBF)"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80"
+                  alt="Тренування зі штангою"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+
+              <a
+                href="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Персональний розбір біомеханіки та амплітуди руху"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+                  alt="Контроль техніки вправи"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+
+              <a
+                href="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Збалансований раціон та точний трекінг макронутрієнтів"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80"
+                  alt="Раціон харчування атлета"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+
+              <a
+                href="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80"
+                data-fancybox="coaching-gallery"
+                data-caption="Сучасне обладнання для безпечного тренінгу в залі"
+                class="group block overflow-hidden rounded-2xl border border-brand-elevated hover:border-brand-terracotta transition-colors"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80"
+                  alt="Тренажерний зал"
+                  loading="lazy"
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1228,6 +1579,12 @@
         </button>
       </div>
     </div>
+
+    <!-- CDN скрипти Vanilla JS бібліотек -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="assets/js/plugins.js"></script>
 
     <script src="assets/js/validation.js"></script>
   </body>
