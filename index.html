@@ -190,7 +190,6 @@
               Натуральний фітнес-коучинг. Тільки наука, дисципліна та ваш
               результат.
             </h1>
-            <!-- Ось цей блок просто додається між h1 та p -->
             <div
               class="text-xl md:text-2xl font-bold text-brand-terracotta mb-6 min-h-[32px]"
             >
@@ -289,7 +288,7 @@
         </div>
       </section>
 
-      <!-- Відновлений Блок "Калькулятор БЖУ" -->
+      <!-- Оновлений Блок "Калькулятор БЖУ" з трирівневим захистом Edge Cases -->
       <section id="calculator" class="bg-brand-surface py-20 md:py-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -301,16 +300,16 @@
               </h2>
               <p class="text-brand-muted text-lg">
                 Дізнайтеся орієнтовну кількість калорій та макронутрієнтів для
-                підтримки вашого організму
+                досягнення вашої цілі з миттєвим перерахунком.
               </p>
               <ul class="space-y-4 text-lg">
                 <li class="flex items-center gap-3">
                   <i class="fa-solid fa-check text-brand-terracotta"></i>
-                  Враховує ваш вік, зріст та вагу
+                  Враховує ваш вік, зріст, вагу та активність
                 </li>
                 <li class="flex items-center gap-3">
                   <i class="fa-solid fa-check text-brand-terracotta"></i>
-                  Базується на сучасних формулах (Mifflin-St Jeor)
+                  Базується на науковій формулі Mifflin-St Jeor
                 </li>
               </ul>
             </div>
@@ -319,13 +318,17 @@
             <div
               class="w-full p-6 sm:p-8 bg-brand-main border border-brand-elevated rounded-2xl shadow-2xl"
             >
-              <form id="bjuForm" class="space-y-5">
+              <form id="bjuForm" novalidate class="space-y-5">
                 <!-- Стать -->
                 <div>
                   <span class="block text-sm font-semibold text-slate-200 mb-2"
                     >Стать</span
                   >
-                  <div class="grid grid-cols-2 gap-3">
+                  <div
+                    class="grid grid-cols-2 gap-3"
+                    role="radiogroup"
+                    aria-label="Стать"
+                  >
                     <label class="cursor-pointer">
                       <input
                         type="radio"
@@ -354,10 +357,15 @@
                       </div>
                     </label>
                   </div>
+                  <p
+                    id="bjuGenderError"
+                    class="hidden mt-1.5 text-xs text-red-400"
+                    role="alert"
+                  ></p>
                 </div>
 
-                <!-- Вік, Вага, Зріст -->
-                <div class="grid grid-cols-3 gap-3">
+                <!-- Вік, Вага, Зріст (адаптивно 1 колонка на 320px, 3 колонки від sm) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
                     <label
                       for="bjuAge"
@@ -369,11 +377,20 @@
                       id="bjuAge"
                       min="14"
                       max="90"
+                      step="1"
                       value="22"
                       required
-                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                      aria-describedby="bjuAgeError"
+                      aria-invalid="false"
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm transition-colors focus:outline-none focus:border-brand-terracotta"
                     />
+                    <p
+                      id="bjuAgeError"
+                      class="hidden mt-1 text-xs text-red-400 leading-tight"
+                      role="alert"
+                    ></p>
                   </div>
+
                   <div>
                     <label
                       for="bjuWeight"
@@ -385,11 +402,20 @@
                       id="bjuWeight"
                       min="35"
                       max="220"
+                      step="0.5"
                       value="75"
                       required
-                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                      aria-describedby="bjuWeightError"
+                      aria-invalid="false"
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm transition-colors focus:outline-none focus:border-brand-terracotta"
                     />
+                    <p
+                      id="bjuWeightError"
+                      class="hidden mt-1 text-xs text-red-400 leading-tight"
+                      role="alert"
+                    ></p>
                   </div>
+
                   <div>
                     <label
                       for="bjuHeight"
@@ -401,10 +427,18 @@
                       id="bjuHeight"
                       min="130"
                       max="230"
+                      step="1"
                       value="180"
                       required
-                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                      aria-describedby="bjuHeightError"
+                      aria-invalid="false"
+                      class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm transition-colors focus:outline-none focus:border-brand-terracotta"
                     />
+                    <p
+                      id="bjuHeightError"
+                      class="hidden mt-1 text-xs text-red-400 leading-tight"
+                      role="alert"
+                    ></p>
                   </div>
                 </div>
 
@@ -417,7 +451,9 @@
                   >
                   <select
                     id="bjuActivity"
-                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                    aria-describedby="bjuActivityError"
+                    aria-invalid="false"
+                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm transition-colors focus:outline-none focus:border-brand-terracotta"
                   >
                     <option value="1.2">
                       Мінімальна (сидячий спосіб життя)
@@ -432,6 +468,11 @@
                       Висока (6–7 інтенсивних тренувань)
                     </option>
                   </select>
+                  <p
+                    id="bjuActivityError"
+                    class="hidden mt-1.5 text-xs text-red-400"
+                    role="alert"
+                  ></p>
                 </div>
 
                 <!-- Ціль -->
@@ -443,12 +484,19 @@
                   >
                   <select
                     id="bjuGoal"
-                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm focus:outline-none focus:border-brand-terracotta"
+                    aria-describedby="bjuGoalError"
+                    aria-invalid="false"
+                    class="w-full h-11 px-3 rounded-xl bg-brand-surface border border-brand-elevated text-white text-sm transition-colors focus:outline-none focus:border-brand-terracotta"
                   >
                     <option value="cut">Жироспалення (дефіцит -15%)</option>
                     <option value="maintain" selected>Підтримка форми</option>
                     <option value="bulk">Набір м'язової маси (+15%)</option>
                   </select>
+                  <p
+                    id="bjuGoalError"
+                    class="hidden mt-1.5 text-xs text-red-400"
+                    role="alert"
+                  ></p>
                 </div>
 
                 <button
@@ -459,19 +507,19 @@
                 </button>
               </form>
 
-              <!-- Результат розрахунку -->
+              <!-- Результат розрахунку (одразу видимий для live-перерахунку) -->
               <div
                 id="bjuResult"
-                class="hidden mt-6 pt-6 border-t border-brand-elevated space-y-4"
+                class="mt-6 pt-6 border-t border-brand-elevated space-y-4"
               >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between gap-2">
                   <span class="text-sm text-brand-muted"
                     >Денна норма калорій:</span
                   >
                   <span
                     id="resCalories"
                     class="text-2xl font-extrabold text-brand-terracotta"
-                    >2650 ккал</span
+                    >2 744 ккал</span
                   >
                 </div>
                 <div class="grid grid-cols-3 gap-3 text-center">
@@ -488,7 +536,7 @@
                   >
                     <div class="text-xs text-brand-muted mb-1">Жири</div>
                     <div id="resFats" class="text-base font-bold text-white">
-                      74 г
+                      68 г
                     </div>
                   </div>
                   <div
@@ -496,10 +544,16 @@
                   >
                     <div class="text-xs text-brand-muted mb-1">Вуглеводи</div>
                     <div id="resCarbs" class="text-base font-bold text-white">
-                      346 г
+                      383 г
                     </div>
                   </div>
                 </div>
+                <p
+                  id="bjuStatusMessage"
+                  class="text-xs text-brand-muted leading-relaxed"
+                >
+                  Показники оновлюються автоматично під час зміни параметрів.
+                </p>
                 <button
                   type="button"
                   data-open-booking="Персональний розбір раціону за БЖУ"
@@ -1585,7 +1639,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="assets/js/plugins.js"></script>
-
     <script src="assets/js/validation.js"></script>
+    <script src="assets/js/calculator.js"></script>
   </body>
 </html>
