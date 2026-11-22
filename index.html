@@ -11,56 +11,52 @@
       content="Доказовий натуральний фітнес-коучинг в Україні. Індивідуальні програми, розрахунок харчування та онлайн-супровід."
     />
 
-    <!-- Оптимізація завантаження шрифтів -->
+    <!-- Open Graph та Фавіконка -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta
+      property="og:title"
+      content="Онлайн фітнес-коучинг та програми тренувань | Nazar Chepil Coaching"
+    />
+    <meta
+      property="og:description"
+      content="Доказовий натуральний фітнес-коучинг в Україні. Індивідуальні програми, розрахунок харчування та онлайн-супровід."
+    />
+    <link rel="icon" href="assets/icons/logo.svg.svg" type="image/svg+xml" />
+
+    <!-- Асинхронне завантаження шрифту Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
     />
 
-    <!-- Підключення Font Awesome -->
+    <!-- Скомпільований Tailwind CSS + Кастомний CSS -->
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Асинхронні стилі іконок та бібліотек -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media = 'all'"
     />
-
-    <!-- Tailwind CSS (CDN з конфігурацією бренд-кольорів) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                main: "#121212",
-                surface: "#1e1e1e",
-                elevated: "#2a2a2a",
-                terracotta: "#e2725b",
-                copper: "#b87333",
-                muted: "#a0a0a0",
-              },
-            },
-            fontFamily: {
-              sans: ["Montserrat", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-
-    <!-- CDN стилі для Swiper.js v11 та Fancybox v5 -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      media="print"
+      onload="this.media = 'all'"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+      media="print"
+      onload="this.media = 'all'"
     />
-
-    <!-- Кастомний CSS -->
-    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body
     class="bg-brand-main text-white font-sans antialiased selection:bg-brand-terracotta selection:text-white"
@@ -81,12 +77,17 @@
           <img
             src="assets/icons/logo.svg.svg"
             alt="Nazar Chepil Logo"
+            width="140"
+            height="96"
             class="h-16 sm:h-20 md:h-24 w-auto scale-110 origin-left"
           />
         </a>
 
         <!-- Десктопна навігація -->
-        <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav
+          class="hidden md:flex items-center gap-6 lg:gap-8"
+          aria-label="Головна навігація"
+        >
           <a
             href="#methodology"
             class="text-sm font-medium text-white hover:text-brand-terracotta transition-colors"
@@ -121,13 +122,17 @@
 
           <button
             type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
             onclick="
-              document.getElementById('mobile-menu').classList.toggle('hidden')
+              const m = document.getElementById('mobile-menu');
+              const hidden = m.classList.toggle('hidden');
+              this.setAttribute('aria-expanded', String(!hidden));
             "
-            class="md:hidden text-brand-muted hover:text-white focus:outline-none p-2 ml-1"
+            class="md:hidden text-brand-muted hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded-lg p-2 ml-1"
             aria-label="Відкрити меню"
           >
-            <i class="fa-solid fa-bars text-2xl"></i>
+            <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -242,6 +247,7 @@
               >
                 <i
                   class="fa-solid fa-microscope text-brand-terracotta text-3xl"
+                  aria-hidden="true"
                 ></i>
               </div>
               <h3 class="text-xl font-bold mb-3">Наукова періодизація</h3>
@@ -259,6 +265,7 @@
               >
                 <i
                   class="fa-solid fa-chart-pie text-brand-terracotta text-3xl"
+                  aria-hidden="true"
                 ></i>
               </div>
               <h3 class="text-xl font-bold mb-3">Точна нутриціологія</h3>
@@ -276,6 +283,7 @@
               >
                 <i
                   class="fa-solid fa-chart-line text-brand-terracotta text-3xl"
+                  aria-hidden="true"
                 ></i>
               </div>
               <h3 class="text-xl font-bold mb-3">Контроль результату</h3>
@@ -288,7 +296,7 @@
         </div>
       </section>
 
-      <!-- Оновлений Блок "Калькулятор БЖУ" з трирівневим захистом Edge Cases -->
+      <!-- Блок "Калькулятор БЖУ" -->
       <section id="calculator" class="bg-brand-surface py-20 md:py-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -304,11 +312,17 @@
               </p>
               <ul class="space-y-4 text-lg">
                 <li class="flex items-center gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta"
+                    aria-hidden="true"
+                  ></i>
                   Враховує ваш вік, зріст, вагу та активність
                 </li>
                 <li class="flex items-center gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta"
+                    aria-hidden="true"
+                  ></i>
                   Базується на науковій формулі Mifflin-St Jeor
                 </li>
               </ul>
@@ -364,7 +378,7 @@
                   ></p>
                 </div>
 
-                <!-- Вік, Вага, Зріст (адаптивно 1 колонка на 320px, 3 колонки від sm) -->
+                <!-- Вік, Вага, Зріст -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
                     <label
@@ -507,7 +521,7 @@
                 </button>
               </form>
 
-              <!-- Результат розрахунку (одразу видимий для live-перерахунку) -->
+              <!-- Результат розрахунку -->
               <div
                 id="bjuResult"
                 class="mt-6 pt-6 border-t border-brand-elevated space-y-4"
@@ -598,7 +612,7 @@
         </div>
       </section>
 
-      <!-- Блок "Результати та відгуки" (Swiper.js + Fancybox v5) -->
+      <!-- Блок "Результати та відгуки" -->
       <section
         id="results"
         class="bg-brand-surface py-20 md:py-28 border-y border-brand-elevated"
@@ -619,7 +633,7 @@
             </p>
           </div>
 
-          <!-- Слайдер відгуків (Swiper.js v11 — 5 слайдів) -->
+          <!-- Слайдер відгуків -->
           <div
             class="swiper reviews-swiper pb-14 mb-20"
             style="
@@ -636,12 +650,13 @@
                   <div>
                     <div
                       class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                      aria-label="Оцінка 5 з 5"
                     >
-                      <i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <p
                       class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
@@ -679,12 +694,13 @@
                   <div>
                     <div
                       class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                      aria-label="Оцінка 5 з 5"
                     >
-                      <i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <p
                       class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
@@ -720,12 +736,13 @@
                   <div>
                     <div
                       class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                      aria-label="Оцінка 5 з 5"
                     >
-                      <i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <p
                       class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
@@ -759,12 +776,13 @@
                   <div>
                     <div
                       class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                      aria-label="Оцінка 5 з 5"
                     >
-                      <i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <p
                       class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
@@ -798,12 +816,13 @@
                   <div>
                     <div
                       class="flex items-center gap-1 text-brand-terracotta text-sm mb-4"
+                      aria-label="Оцінка 5 з 5"
                     >
-                      <i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i
-                      ><i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i
+                      ><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <p
                       class="text-slate-300 text-sm md:text-base italic leading-relaxed mb-6"
@@ -834,7 +853,7 @@
             <div class="swiper-button-next"></div>
           </div>
 
-          <!-- Модальна галерея (Fancybox v5 — єдиний альбом coaching-gallery) -->
+          <!-- Модальна галерея -->
           <div>
             <h3 class="text-2xl md:text-3xl font-bold text-center mb-3">
               Тренувальний процес та атмосфера
@@ -854,7 +873,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80"
                   alt="Тренувальний зал та інвентар"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -868,7 +890,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80"
                   alt="Виконання силової вправи"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -882,7 +907,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80"
                   alt="Тренування зі штангою"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -896,7 +924,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
                   alt="Контроль техніки вправи"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -910,7 +941,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80"
                   alt="Раціон харчування атлета"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -924,7 +958,10 @@
                 <img
                   src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80"
                   alt="Тренажерний зал"
+                  width="600"
+                  height="400"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 cursor-zoom-in"
                 />
               </a>
@@ -949,7 +986,7 @@
           <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
           >
-            <!-- Картка 1: Разова консультація -->
+            <!-- Картка 1 -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -967,20 +1004,29 @@
               </div>
               <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   60 хвилин онлайн-сесії
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Аналіз раціону та тренувань
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Розбір відео-техніки 3-х вправ
                 </li>
-                <li class="flex items-start gap-3 text-gray-500">
-                  <i class="fa-solid fa-xmark mt-1"></i> Без подальшого
-                  супроводу
+                <li class="flex items-start gap-3 text-slate-400">
+                  <i class="fa-solid fa-xmark mt-1" aria-hidden="true"></i> Без
+                  подальшого супроводу
                 </li>
               </ul>
               <button
@@ -992,7 +1038,7 @@
               </button>
             </article>
 
-            <!-- Картка 2: План тренувань -->
+            <!-- Картка 2 -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -1010,19 +1056,29 @@
               </div>
               <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Схема на 8-12 тижнів
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Періодизація навантаження (RPE)
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Врахування травм та інвентарю
                 </li>
-                <li class="flex items-start gap-3 text-gray-500">
-                  <i class="fa-solid fa-xmark mt-1"></i> Без контролю харчування
+                <li class="flex items-start gap-3 text-slate-400">
+                  <i class="fa-solid fa-xmark mt-1" aria-hidden="true"></i> Без
+                  контролю харчування
                 </li>
               </ul>
               <button
@@ -1034,7 +1090,7 @@
               </button>
             </article>
 
-            <!-- Картка 3: План тренувань + Харчування -->
+            <!-- Картка 3 -->
             <article
               class="bg-brand-surface rounded-2xl p-6 border border-brand-elevated flex flex-col hover:-translate-y-2 hover:border-brand-terracotta transition-all duration-300"
             >
@@ -1052,19 +1108,31 @@
               </div>
               <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Програма тренувань
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Розрахунок калорій та БЖУ
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Конструктор раціону
                 </li>
                 <li class="flex items-start gap-3">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Гайд по добавкам
                 </li>
               </ul>
@@ -1077,7 +1145,7 @@
               </button>
             </article>
 
-            <!-- Картка 4: Персональний Pro-супровід -->
+            <!-- Картка 4 -->
             <article
               class="bg-brand-elevated rounded-2xl p-6 border-2 border-brand-terracotta flex flex-col relative lg:scale-105 shadow-2xl"
             >
@@ -1100,19 +1168,31 @@
               </div>
               <ul class="flex-grow space-y-4 mb-8 text-brand-muted text-sm">
                 <li class="flex items-start gap-3 text-white">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Тренування + Харчування
                 </li>
                 <li class="flex items-start gap-3 text-white">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Щотижневий аналіз техніки
                 </li>
                 <li class="flex items-start gap-3 text-white">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Коригування Check-ins
                 </li>
                 <li class="flex items-start gap-3 text-white">
-                  <i class="fa-solid fa-check text-brand-terracotta mt-1"></i>
+                  <i
+                    class="fa-solid fa-check text-brand-terracotta mt-1"
+                    aria-hidden="true"
+                  ></i>
                   Щоденний зв'язок у Telegram
                 </li>
               </ul>
@@ -1137,9 +1217,9 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Блок з акордеонами (Карта та Календар) -->
         <div class="max-w-4xl mx-auto mb-16 space-y-6">
-          <h4 class="text-xl md:text-2xl font-bold mb-6 text-center text-white">
+          <h3 class="text-xl md:text-2xl font-bold mb-6 text-center text-white">
             Локація та Календар
-          </h4>
+          </h3>
 
           <!-- Акордеон: Карта -->
           <div
@@ -1147,15 +1227,17 @@
           >
             <button
               type="button"
+              aria-expanded="false"
+              aria-controls="map-content"
               onclick="
-                document
-                  .getElementById('map-content')
-                  .classList.toggle('hidden');
+                const c = document.getElementById('map-content');
+                const hidden = c.classList.toggle('hidden');
                 document
                   .getElementById('map-icon')
                   .classList.toggle('rotate-180');
+                this.setAttribute('aria-expanded', String(!hidden));
               "
-              class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none"
+              class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta"
             >
               <div class="flex items-center gap-3 sm:gap-4">
                 <div
@@ -1163,6 +1245,7 @@
                 >
                   <i
                     class="fa-solid fa-map-location-dot text-brand-terracotta text-lg sm:text-xl"
+                    aria-hidden="true"
                   ></i>
                 </div>
                 <span
@@ -1173,6 +1256,7 @@
               <i
                 id="map-icon"
                 class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"
+                aria-hidden="true"
               ></i>
             </button>
 
@@ -1202,15 +1286,17 @@
           >
             <button
               type="button"
+              aria-expanded="false"
+              aria-controls="calendar-content"
               onclick="
-                document
-                  .getElementById('calendar-content')
-                  .classList.toggle('hidden');
+                const c = document.getElementById('calendar-content');
+                const hidden = c.classList.toggle('hidden');
                 document
                   .getElementById('calendar-icon')
                   .classList.toggle('rotate-180');
+                this.setAttribute('aria-expanded', String(!hidden));
               "
-              class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none"
+              class="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between hover:bg-brand-elevated transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta"
             >
               <div class="flex items-center gap-3 sm:gap-4">
                 <div
@@ -1218,6 +1304,7 @@
                 >
                   <i
                     class="fa-solid fa-calendar-days text-brand-terracotta text-lg sm:text-xl"
+                    aria-hidden="true"
                   ></i>
                 </div>
                 <span
@@ -1228,6 +1315,7 @@
               <i
                 id="calendar-icon"
                 class="fa-solid fa-chevron-down text-brand-muted transition-transform duration-300 text-lg sm:text-xl"
+                aria-hidden="true"
               ></i>
             </button>
 
@@ -1241,8 +1329,6 @@
                 <iframe
                   src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FKyiv&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH"
                   class="w-full h-full border-0"
-                  frameborder="0"
-                  scrolling="no"
                   loading="lazy"
                   title="Календар"
                 >
@@ -1259,6 +1345,8 @@
               <img
                 src="assets/icons/logo.svg.svg"
                 alt="Nazar Chepil Logo"
+                width="160"
+                height="112"
                 class="h-24 md:h-28 w-auto object-contain origin-left"
               />
             </a>
@@ -1269,15 +1357,17 @@
             <div class="flex gap-4">
               <a
                 href="https://www.instagram.com/nazar_chepil_/"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-xl text-brand-muted hover:text-brand-terracotta transition-colors"
                 aria-label="Instagram"
-                ><i class="fa-brands fa-instagram"></i
+                ><i class="fa-brands fa-instagram" aria-hidden="true"></i
               ></a>
               <a
-                href="#"
+                href="#contact"
                 class="text-xl text-brand-muted hover:text-brand-terracotta transition-colors"
                 aria-label="Telegram"
-                ><i class="fa-brands fa-telegram"></i
+                ><i class="fa-brands fa-telegram" aria-hidden="true"></i
               ></a>
             </div>
           </div>
@@ -1322,11 +1412,17 @@
             <h4 class="text-lg font-bold mb-6">Контакти</h4>
             <ul class="space-y-4">
               <li class="flex items-center gap-3 text-brand-muted">
-                <i class="fa-solid fa-envelope text-brand-terracotta"></i>
+                <i
+                  class="fa-solid fa-envelope text-brand-terracotta"
+                  aria-hidden="true"
+                ></i>
                 info.nazarchepil@gmail.com
               </li>
               <li class="flex items-center gap-3 text-brand-muted">
-                <i class="fa-solid fa-location-dot text-brand-terracotta"></i>
+                <i
+                  class="fa-solid fa-location-dot text-brand-terracotta"
+                  aria-hidden="true"
+                ></i>
                 Україна, Львів / Онлайн
               </li>
             </ul>
@@ -1334,11 +1430,13 @@
         </div>
 
         <div
-          class="border-t border-brand-elevated pt-8 text-center text-sm text-brand-muted/60"
+          class="border-t border-brand-elevated pt-8 text-center text-sm text-brand-muted"
         >
           <p>
             &copy; 2026 Nazar Chepil Coaching. Всі права захищені. |
-            <a href="#" class="hover:text-brand-terracotta transition-colors"
+            <a
+              href="#contact"
+              class="hover:text-brand-terracotta transition-colors"
               >Договір публічної оферти</a
             >
           </p>
@@ -1346,9 +1444,7 @@
       </div>
     </footer>
 
-    <!-- =================================================================== -->
-    <!-- ПОПАП З ФОРМОЮ ЗАПИСУ НА КОНСУЛЬТАЦІЮ ТА КЛІЄНТСЬКОЮ ВАЛІДАЦІЄЮ     -->
-    <!-- =================================================================== -->
+    <!-- ПОПАП З ФОРМОЮ ЗАПИСУ НА КОНСУЛЬТАЦІЮ -->
     <div
       id="bookingModal"
       role="dialog"
@@ -1359,17 +1455,15 @@
       <div
         class="relative w-full max-w-2xl my-auto p-6 sm:p-8 bg-[#1E1E1E] border border-[#2A2A2A] rounded-2xl shadow-2xl max-h-[92vh] overflow-y-auto"
       >
-        <!-- Кнопка закриття попапу -->
         <button
           type="button"
           id="closeBookingModalBtn"
           aria-label="Закрити вікно запису"
           class="absolute top-4 right-4 w-9 h-9 rounded-lg bg-[#121212] border border-[#2A2A2A] text-slate-400 hover:text-white hover:border-[#E2725B] flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E2725B]"
         >
-          <i class="fa-solid fa-xmark text-lg"></i>
+          <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
         </button>
 
-        <!-- Заголовок попапу -->
         <div class="mb-6 pr-8">
           <span
             id="bookingServiceBadge"
@@ -1389,10 +1483,8 @@
           </p>
         </div>
 
-        <!-- Семантична форма з валідацією -->
         <form id="feedbackForm" novalidate class="space-y-5">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <!-- Ім'я -->
             <div>
               <label
                 for="username"
@@ -1434,7 +1526,6 @@
               ></p>
             </div>
 
-            <!-- Емейл -->
             <div>
               <label
                 for="email"
@@ -1477,7 +1568,6 @@
             </div>
           </div>
 
-          <!-- Телефон -->
           <div>
             <label
               for="phone"
@@ -1521,7 +1611,6 @@
             ></p>
           </div>
 
-          <!-- Повідомлення -->
           <div>
             <label
               for="message"
@@ -1545,7 +1634,6 @@
             ></p>
           </div>
 
-          <!-- Чекбокс згоди -->
           <div>
             <div class="flex items-start gap-3">
               <input
@@ -1573,7 +1661,6 @@
             ></p>
           </div>
 
-          <!-- Кнопка надсилання -->
           <button
             type="submit"
             class="w-full h-12 px-6 rounded-xl bg-[#E2725B] hover:bg-[#d16049] active:scale-[0.99] text-white font-bold text-sm sm:text-base tracking-wide shadow-lg shadow-[#E2725B]/20 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E1E1E] focus-visible:ring-[#E2725B]"
@@ -1584,9 +1671,7 @@
       </div>
     </div>
 
-    <!-- =================================================================== -->
-    <!-- МОДАЛЬНЕ ВІКНО УСПІШНОЇ ВАЛІДАЦІЇ                                   -->
-    <!-- =================================================================== -->
+    <!-- МОДАЛЬНЕ ВІКНО УСПІШНОЇ ВАЛІДАЦІЇ -->
     <div
       id="successModal"
       role="dialog"
@@ -1634,12 +1719,18 @@
       </div>
     </div>
 
-    <!-- CDN скрипти Vanilla JS бібліотек -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/validation.js"></script>
-    <script src="assets/js/calculator.js"></script>
+    <!-- CDN та локальні скрипти з defer -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"
+    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script defer src="assets/js/plugins.js"></script>
+    <script defer src="assets/js/validation.js"></script>
+    <script defer src="assets/js/calculator.js"></script>
   </body>
 </html>
